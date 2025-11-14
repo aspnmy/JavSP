@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  javsp:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ./videos:/video        # 影片目录
+      - ./config.yml:/app/config.yml  # 配置文件
+      - ./output:/app/output    # 输出目录
+    environment:
+      - TZ=Asia/Shanghai       # 时区设置
+    restart: unless-stopped
